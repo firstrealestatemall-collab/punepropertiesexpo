@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Property Expo  | Conducted by The Real Estate Mall</title>
+    <!-- Fonts: Outfit for luxury headings, Plus Jakarta Sans for UI text -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Luxury Palette */
+            --bg-dark: #0a0d14;
+            --bg-surface: #111622;
+            --bg-card: #171e2e;
+            --border-card: #222b3e;
+            
+            --gold-primary: #d4af37;
+            --gold-hover: #b89628;
+            --gold-light: rgba(212, 175, 55, 0.12);
+            
+            --text-heading: #ffffff;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            
+            --green-accent: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-heading);
+        }
+
+        /* --- Sticky Navigation --- */
+        header {
+            background: rgba(10, 13, 20, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 18px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--gold-primary);
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold-primary);
+        }
+
+        .btn-gold {
+            background: var(--gold-primary);
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-heading);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* --- Hero Section with Background Banner --- */
+        .hero-wrapper {
+            position: relative;
+            background: linear-gradient(180deg, rgba(10, 13, 20, 0.82) 40%, rgba(10, 13, 20, 0.96) 80%, var(--bg-dark) 100%), 
+                        url('ChatGPT Image Jul 23, 2026, 03_11_59 PM.png') center/cover no-repeat;
+        }
+
+        .hero {
+            padding: 180px 8% 90px;
+            text-align: center;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.18);
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .hero h1 span {
+            color: var(--gold-primary);
+        }
+
+        /* Budget Highlight Tag */
+        .price-highlight-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
+            color: #000;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            padding: 8px 24px;
+            border-radius: 30px;
+            margin: 10px 0 25px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 780px;
+            margin: 0 auto 35px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* --- Stats Grid --- */
+        .stats-section {
+            padding: 0 8% 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 25px 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-body);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Global Section Title --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- Strategic Hubs Section --- */
+        .hubs-section {
+            padding: 80px 8%;
+            background: var(--bg-surface);
+        }
+
+        .hubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hub-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-primary);
+        }
+
+        .hub-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hub-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hub-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-bottom: 10px;
+        }
+
+        .hub-address {
+            color: var(--text-body);
+            font-size: 0.95rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.5;
+        }
+
+        .hub-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--gold-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- Why Attend Section --- */
+        .why-attend-section {
+            padding: 90px 8%;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 30px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .why-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-heading);
+        }
+
+        /* --- Legacy Section --- */
+        .legacy-section {
+            padding: 80px 8%;
+            background: var(--bg-surface);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .timeline-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 30px;
+            border-radius: 14px;
+            border-top: 3px solid var(--gold-primary);
+        }
+
+        .timeline-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- VIP Form Section --- */
+        .form-section {
+            padding: 90px 8%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+        }
+
+        .form-container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-card);
+            background: var(--bg-surface);
+            color: var(--text-heading);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: var(--gold-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gold-primary);
+            color: #000;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-hover);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #06080d;
+            border-top: 1px solid var(--border-card);
+            padding: 60px 8% 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 850px) {
+            .hero h1 { font-size: 2.3rem; }
+            nav { display: none; }
+            .form-container { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="https://www.punepropertiesexpo.in/" class="logo" target="_blank">
+            PUNE PROPERTY <span>EXPO 2026</span>
+        </a>
+        <nav>
+            <a href="#hubs">Strategic Hubs</a>
+            <a href="#why-attend">Why Attend</a>
+            <a href="#legacy">About Mall</a>
+            <a href="#register">VIP Pass</a>
+        </nav>
+        <a href="#register" class="btn-gold">Get Free VIP Pass</a>
+    </header>
+
+    <!-- Hero Section with Background Banner & Price Highlight -->
+    <div class="hero-wrapper">
+        <section class="hero">
+            <span class="event-badge">PUNE'S BIGGEST PROPERTY EXPO</span>
+            <h1>Explore Your Dream Property <span>Under One Roof</span></h1>
+            
+            <!-- Price Highlight Banner -->
+            <div>
+                <div class="price-highlight-tag">🏢 Flats Starting From ₹28 Lakhs to ₹30 Cr</div>
+            </div>
+
+            <p>Conducted by <strong>The Real Estate Mall</strong>. Over 200+ projects and 60+ top developers gathered under one roof with exclusive developer offers, zero brokerage, and instant loan approvals.</p>
+            <div class="hero-btns">
+                <a href="#register" class="btn-gold">Claim Free VIP Entry</a>
+                <a href="#hubs" class="btn-outline">View Expo Venues</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Stats Grid -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Projects Exhibited</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Top Developers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">TYPES OF PROPERTIES</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0%</div>
+                <div class="stat-label">Zero Brokerage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Iconic Locations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Hubs of Choice Section with Mall Images -->
+    <section id="hubs" class="hubs-section">
+        <div class="section-header">
+            <h2>Strategic Hubs of Choice</h2>
+            <p>We've selected two of Pune's most iconic commercial locations to host this year's expo.</p>
+        </div>
+
+        <div class="hubs-grid">
+            <!-- Hub 1: Baner -->
+            <div class="hub-card">
+                <div class="hub-img" style="background-image: url('the-real-estate-mall-baner.jpg');"></div>
+                <div class="hub-body">
+                    <div>
+                        <div class="hub-header">
+                            <h3>The Real Estate Mall, Baner</h3>
+                        </div>
+                        <div class="hub-address">
+                            <span>📍</span>
+                            <span>2/2 Achalare House, Baner Road, Pune 411069</span>
+                        </div>
+                        <div class="hub-features">
+                            <span class="chip">Valet Parking</span>
+                            <span class="chip">VIP Lounge</span>
+                            <span class="chip">Cafeteria</span>
+                            <span class="chip">Legal Desk</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=The+Real+Estate+Mall+Baner+Pune" target="_blank" class="btn-outline" style="text-align: center; width: 100%;">Get Directions</a>
+                </div>
+            </div>
+
+            <!-- Hub 2: Kharadi -->
+            <div class="hub-card">
+                <div class="hub-img" style="background-image: url('the-real-estate-mall-kharadi.jpg');"></div>
+                <div class="hub-body">
+                    <div>
+                        <div class="hub-header">
+                            <h3>The Real Estate Mall, Kharadi</h3>
+                        </div>
+                        <div class="hub-address">
+                            <span>📍</span>
+                            <span>Nyati Plaza, Thite Nagar, Kharadi, Pune 411014</span>
+                        </div>
+                        <div class="hub-features">
+                            <span class="chip">Ample Parking</span>
+                            <span class="chip">Live Seminar</span>
+                            <span class="chip">Tech Demos</span>
+                            <span class="chip">Bank Assist</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=The+Real+Estate+Mall+kharadi+Pune" target="_blank" class="btn-outline" style="text-align: center; width: 100%;">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Should You Attend Section (New) -->
+    <section id="why-attend" class="why-attend-section">
+        <div class="section-header">
+            <h2>Why Should You Attend This Expo?</h2>
+            <p>The ultimate destination for homebuyers, real estate investors, and commercial property seekers.</p>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <span class="why-icon">🏷️</span>
+                <h3>Exclusive Expo Discounts</h3>
+                <p>Unlock pre-launch pricing and direct developer discounts unavailable anywhere else in Pune.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-icon">🚗</span>
+                <h3>Free Cab & Site Visits</h3>
+                <p>Enjoy complimentary cab facility from our mall locations directly to your shortlisted project sites.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-icon">🏛️</span>
+                <h3>Instant Bank Approvals</h3>
+                <p>Get on-spot loan sanctioning from over 10+ leading national and private banking partners.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-icon">🌍</span>
+                <h3>Dubai Real Estate Desk</h3>
+                <p>Explore international high-yield tax-free property investment opportunities in Dubai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legacy / Real Estate Mall Section -->
+    <section id="legacy" class="legacy-section">
+        <div class="section-header">
+            <h2>Carry Your Cheque Book For Spot Booking Benefits</h2>
+            <p>Conducted by The Real Estate Mall - India's leading unified property advisory platform</p>
+        </div>
+
+        <div class="timeline-grid">
+            <div class="timeline-box">
+                <h3>Pan-India & Global Reach</h3>
+                <p>Connecting homebuyers and investors across Pune, Mumbai, and international investment desks in Dubai.</p>
+            </div>
+            <div class="timeline-box">
+                <h3>75 Quality Checks</h3>
+                <p>Every project featured at the Expo undergoes rigorous legal, structural, and financial title verification.</p>
+            </div>
+            <div class="timeline-box">
+                <h3>Zero Fee Guarantee</h3>
+                <p>Enjoy transparent, unbiased property consulting directly from top developers with zero brokerage fees.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- VIP Registration Form Section -->
+<section id="register" class="form-section">
+    <div class="section-header">
+        <h2>Your Premium Property Journey Starts Here</h2>
+        <p>Register below to receive your Free VIP Pass & unlock Expo-exclusive pricing.</p>
+    </div>
+
+    <div class="form-container">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <!-- ⚠️ REPLACE THIS WITH YOUR ACTUAL WEB3FORMS ACCESS KEY -->
+            <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3">
+
+            <!-- Email Subject -->
+            <input type="hidden" name="subject" value="New Pune Property Expo VIP Lead">
+
+            <!-- Custom Success Redirect (Optional: Redirect to a dedicated thank-you page) -->
+            <!-- <input type="hidden" name="redirect" value="https://punepropertiesexpo.in/thank-you.html"> -->
+
+            <!-- Form Fields -->
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="Full Name" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" name="Phone Number" placeholder="+91 98765 43210" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="Email" placeholder="rahul@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Venue for Visit *</label>
+                <select name="Venue" required>
+                    <option value="">-- Select Expo Location --</option>
+                    <option value="Baner - Achalare House">The Real Estate Mall - Baner</option>
+                    <option value="Kharadi - Nyati Plaza">The Real Estate Mall - Kharadi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Target Budget Range</label>
+                <select name="Budget">
+                    <option value="₹28 Lakhs - ₹50 Lakhs">₹28 Lakhs - ₹50 Lakhs</option>
+                    <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                    <option value="₹1 Crore - ₹3 Crores">₹1 Crore - ₹3 Crores</option>
+                    <option value="₹3 Crores - ₹10 Crores">₹3 Crores - ₹10 Crores</option>
+                    <option value="₹10 Crores - ₹30 Crores">Luxury (₹10 Cr - ₹30 Cr)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Claim Free VIP Entry Pass</button>
+        </form>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Organized by <a href="https://www.realestatemallindia.com/" target="_blank">The Real Estate Mall</a>. All rights reserved.</p>
+        <p style="margin-top: 6px;">Baner Road & Kharadi IT Hub, Pune, Maharashtra.</p>
+    </footer>
+
+</body>
+</html>
