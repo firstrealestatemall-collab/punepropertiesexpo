@@ -12,6 +12,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             /* Dark Luxury Palette */
@@ -473,6 +475,38 @@
             nav { display: none; }
             .form-container { padding: 25px; }
         }
+        /* Floating WhatsApp Button Styling */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Hover Effect */
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        
+        .whatsapp-icon {
+            margin-top: 2px;
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-05JKHBD1CY">
@@ -719,6 +753,12 @@
         <p>&copy; 2026 Organized by <a href="https://www.realestatemallindia.com/" target="_blank">The Real Estate Mall</a>. All rights reserved.</p>
         <p style="margin-top: 6px;">Baner Road & Kharadi IT Hub, Pune, Maharashtra.</p>
     </footer>
-
+    <a href="https://wa.me/918755887558?text=Hi!%20I%20am%20interested%20in%20Pune%20Property%20Expo." 
+    class="whatsapp-float" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+    </a>
 </body>
 </html>
