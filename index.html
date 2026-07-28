@@ -539,6 +539,81 @@
     .phone-icon {
         margin-top: 1px;
     }
+    /* Partners Section Wrapper */
+    .partners-section {
+        background-color: #d4af37;
+        padding: 40px 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* Section Title */
+    .partners-title {
+        color: #000000; /* Luxury Gold color matching your theme */
+        font-family: 'Outfit', sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Outer Slider Container */
+    .partners-slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background: #d4af37;
+    }
+
+    /* Animated Track */
+    .partners-track {
+        display: flex;
+        width: max-content; /* Automatically fits all items */
+        animation: scrollLogos 40s linear infinite;
+    }
+
+    /* Pause animation when user hovers over logos (Optional) */
+    .partners-slider:hover .partners-track {
+        animation-play-state: paused;
+    }
+
+    /* Individual Card Styling matching the design */
+    .partner-card {
+        width: 220px;
+        height: 100px;
+        background: #fefeff; /* Light grey/white card background */
+        margin: 0 8px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .partner-card img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: grayscale(10%); /* Keeps branding sharp */
+        transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Infinite Keyframe Animation: Right to Left */
+    @keyframes scrollLogos {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%); /* Moves exactly half the track width for seamless loop */
+        }
+    }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-05JKHBD1CY">
@@ -668,6 +743,96 @@
         </div>
     </section>
 
+    <!-- Our Partners Section -->
+    <section class="partners-section">
+        <h2 class="partners-title">Our Partners</h2>
+        
+        <div class="partners-slider">
+            <div class="partners-track">
+                <!-- First Set of Logos -->
+                <div class="partner-card"><img src="nyati.png" alt="nyati"></div>
+                <div class="partner-card"><img src="skyi.png" alt="skyi"></div>
+                <div class="partner-card"><img src="engineers-horizon.png" alt="Engineers Horizon"></div>
+                <div class="partner-card"><img src="nandan-buildcon.png" alt="Nandan Buildcon.png"></div>
+                <div class="partner-card"><img src="rohan.png" alt="Rohan"></div>
+                <div class="partner-card"><img src="excella.png" alt="Excella"></div>
+                <div class="partner-card"><img src="reelicon-builders.png" alt="Reelicon Builders"></div>
+                <div class="partner-card"><img src="wyce.png" alt="wyce"></div>
+                <div class="partner-card"><img src="vtp.png" alt="VTP"></div>
+                <div class="partner-card"><img src="divyasparsh.png" alt="Divyasparsh"></div>
+                <div class="partner-card"><img src="merlin.png" alt="Merlin"></div>
+                <div class="partner-card"><img src="sai.png" alt="Sai"></div>
+                <div class="partner-card"><img src="rachana.png" alt="Rachana"></div>
+                <div class="partner-card"><img src="mantra.png" alt="Mantra"></div>
+                <div class="partner-card"><img src="kundan_spaces.png" alt="Kundan Spaces"></div>
+                <div class="partner-card"><img src="krisala.png" alt="krisala"></div>
+                <div class="partner-card"><img src="majestique.png" alt="Majestique"></div>
+                <div class="partner-card"><img src="sanas.png" alt="sanas"></div>
+                <div class="partner-card"><img src="kolte_patil.png" alt="Kolte Patil"></div>
+                <div class="partner-card"><img src="kiran.png" alt="Kiran"></div>
+                <div class="partner-card"><img src="goodwin.png" alt="Goodwin"></div>
+                <div class="partner-card"><img src="solitaire.png" alt="Solitaire"></div>
+                <div class="partner-card"><img src="vantage-capital.png" alt="Vantage Capital"></div>
+                <div class="partner-card"><img src="ceratec.png" alt="Ceratec"></div>
+                <div class="partner-card"><img src="suratwala.png" alt="Suratwala"></div>
+                <div class="partner-card"><img src="pwc.png" alt="PWC"></div>
+                <div class="partner-card"><img src="godrej.png" alt="Godrej"></div>
+                <div class="partner-card"><img src="blueroof.png" alt="Blueroof"></div>
+                <div class="partner-card"><img src="vyom-sigma.png" alt="Vyom Sigma"></div>
+                <div class="partner-card"><img src="magarpatta-builders.png" alt="Magarpatta Builders"></div>
+                <div class="partner-card"><img src="jhamtani.png" alt="Jhamtani"></div>
+                <div class="partner-card"><img src="casagrand.png" alt="Casagrand"></div>
+                <div class="partner-card"><img src="bunty-group.png" alt="Bunty Group"></div>
+                <div class="partner-card"><img src="RTC.png" alt="RTC"></div>
+                <div class="partner-card"><img src="green-meadows.png" alt="Green Meadows"></div>
+                <div class="partner-card"><img src="rainbow-housing.png" alt="Rainbow Housing"></div>
+                <div class="partner-card"><img src="shriram.png" alt="Shriram"></div>
+
+                
+                
+
+                <!-- For Loop -->
+                <div class="partner-card"><img src="nyati.png" alt="nyati"></div>
+                <div class="partner-card"><img src="skyi.png" alt="skyi"></div>
+                <div class="partner-card"><img src="engineers-horizon.png" alt="Engineers Horizon"></div>
+                <div class="partner-card"><img src="nandan-buildcon.png" alt="Nandan Buildcon.png"></div>
+                <div class="partner-card"><img src="rohan.png" alt="Rohan"></div>
+                <div class="partner-card"><img src="excella.png" alt="Excella"></div>
+                <div class="partner-card"><img src="reelicon-builders.png" alt="Reelicon Builders"></div>
+                <div class="partner-card"><img src="wyce.png" alt="wyce"></div>
+                <div class="partner-card"><img src="vtp.png" alt="VTP"></div>
+                <div class="partner-card"><img src="divyasparsh.png" alt="Divyasparsh"></div>
+                <div class="partner-card"><img src="merlin.png" alt="Merlin"></div>
+                <div class="partner-card"><img src="sai.png" alt="Sai"></div>
+                <div class="partner-card"><img src="rachana.png" alt="Rachana"></div>
+                <div class="partner-card"><img src="mantra.png" alt="Mantra"></div>
+                <div class="partner-card"><img src="kundan_spaces.png" alt="Kundan Spaces"></div>
+                <div class="partner-card"><img src="krisala.png" alt="krisala"></div>
+                <div class="partner-card"><img src="majestique.png" alt="Majestique"></div>
+                <div class="partner-card"><img src="sanas.png" alt="sanas"></div>
+                <div class="partner-card"><img src="kolte_patil.png" alt="Kolte Patil"></div>
+                <div class="partner-card"><img src="kiran.png" alt="Kiran"></div>
+                <div class="partner-card"><img src="goodwin.png" alt="Goodwin"></div>
+                <div class="partner-card"><img src="solitaire.png" alt="Solitaire"></div>
+                <div class="partner-card"><img src="vantage-capital.png" alt="Vantage Capital"></div>
+                <div class="partner-card"><img src="ceratec.png" alt="Ceratec"></div>
+                <div class="partner-card"><img src="suratwala.png" alt="Suratwala"></div>
+                <div class="partner-card"><img src="pwc.png" alt="PWC"></div>
+                <div class="partner-card"><img src="godrej.png" alt="Godrej"></div>
+                <div class="partner-card"><img src="blueroof.png" alt="Blueroof"></div>
+                <div class="partner-card"><img src="vyom-sigma.png" alt="Vyom Sigma"></div>
+                <div class="partner-card"><img src="magarpatta-builders.png" alt="Magarpatta Builders"></div>
+                <div class="partner-card"><img src="jhamtani.png" alt="Jhamtani"></div>
+                <div class="partner-card"><img src="casagrand.png" alt="Casagrand"></div>
+                <div class="partner-card"><img src="bunty-group.png" alt="Bunty Group"></div>
+                <div class="partner-card"><img src="RTC.png" alt="RTC"></div>
+                <div class="partner-card"><img src="green-meadows.png" alt="Green Meadows"></div>
+                <div class="partner-card"><img src="rainbow-housing.png" alt="Rainbow Housing"></div>
+                <div class="partner-card"><img src="shriram.png" alt="Shriram"></div>
+            </div>
+        </div>
+    </section>
+     
     <!-- Why Should You Attend Section (New) -->
     <section id="why-attend" class="why-attend-section">
         <div class="section-header">
