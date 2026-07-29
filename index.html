@@ -455,11 +455,11 @@
             background: var(--gold-hover);
         }
 
-        /* --- Footer --- */
+       /* --- Footer & Legal Compliance Section --- */
         footer {
             background: #06080d;
             border-top: 1px solid var(--border-card);
-            padding: 60px 8% 30px;
+            padding: 40px 8% 30px;
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -468,6 +468,77 @@
         footer a {
             color: var(--gold-primary);
             text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-disclaimer {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Legal Modal Popups --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.82);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            color: var(--text-body);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-card);
+            position: relative;
+            text-align: left;
+        }
+
+        .modal-content h3 {
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .modal-content p, .modal-content ul {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .modal-content ul {
+            padding-left: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--text-heading);
+            cursor: pointer;
+            line-height: 1;
         }
 
         @media (max-width: 850px) {
@@ -897,7 +968,7 @@
     <div class="form-container">
         <form action="https://api.web3forms.com/submit" method="POST">
             <!-- ⚠️ REPLACE THIS WITH YOUR ACTUAL WEB3FORMS ACCESS KEY -->
-            <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3">
+            <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3"> 
 
             <!-- Email Subject -->
             <input type="hidden" name="subject" value="New Pune Property Expo VIP Lead">
@@ -947,8 +1018,49 @@
 </section>
     <!-- Footer -->
     <footer>
+    <!-- Footer with Legal Compliance Links -->
+    <footer>
         <p>&copy; 2026 Organized by <a href="https://www.realestatemallindia.com/" target="_blank">The Real Estate Mall</a>. All rights reserved.</p>
         <p style="margin-top: 6px;">Baner Road & Kharadi IT Hub, Pune, Maharashtra.</p>
+        
+        <!-- Privacy Policy & Terms Links required by Google Ads -->
+        <p style="margin-top: 12px;">
+            <a onclick="openModal('privacyModal')">Privacy Policy</a> | 
+            <a onclick="openModal('termsModal')">Terms & Conditions</a>
+        </p>
+
+        <!-- MahaRERA & Corporate Disclaimer -->
+        <div class="legal-disclaimer">
+            <p><strong>MahaRERA Reg No:</strong> A041262500652 </p>
+            <p>Disclaimer: This landing page is managed by <strong>The Real Estate Mall</strong> to promote projects participating in the Pune Property Expo 2026. All developer logos, project details, and images are used for representation purposes as event partners. Prices and offers are subject to change according to developer/MahaRERA guidelines.</p>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal Window -->
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+            <h3>Privacy Policy</h3>
+            <p>At Pune Property Expo (conducted by <strong>The Real Estate Mall</strong>), we respect your privacy and are committed to protecting your personal data.</p>
+            <p><strong>Information Collection:</strong> When you register on this site, we collect details such as your Name, Phone Number, Venue Choice, and Budget Preference.</p>
+            <p><strong>Use of Information:</strong> The details provided are solely used to issue your Free VIP Pass, communicate event updates, and provide personalized real estate consultation related to the expo.</p>
+            <p><strong>Data Security:</strong> We do not sell, rent, or trade your personal information to third-party marketers. By submitting your form, you authorize our team to contact you via Phone Call, WhatsApp, or SMS.</p>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal Window -->
+    <div id="termsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
+            <h3>Terms & Conditions</h3>
+            <p>By registering on this website for the Pune Property Expo 2026, you agree to the following terms:</p>
+            <ul>
+                <li><strong>VIP Passes:</strong> VIP Entry Passes are complimentary and issued on a first-come, first-served basis according to venue capacity.</li>
+                <li><strong>Offers & Pricing:</strong> All property prices, discount structures, and spot-booking offers featured at the expo are provided directly by participating developers and are subject to availability.</li>
+                <li><strong>Role of Host:</strong> The Real Estate Mall acts as an event host and real estate advisor. All legal agreements and purchases are executed directly between the homebuyer and the respective project developer under MahaRERA regulations.</li>
+            </ul>
+        </div>
+    </div>
     </footer>
     <a href="https://wa.me/918755887558?text=Hi!%20I%20am%20interested%20in%20Pune%20Property%20Expo." 
     class="whatsapp-float" 
@@ -963,14 +1075,20 @@
    aria-label="Call us now">
     <i class="fa-solid fa-phone phone-icon"></i>
     </a>
-    <!-- <p>&copy; 2026 Pune Property Expo. Conducted by <a href="https://www.therealestatemall.in" target="_blank">The Real Estate Mall</a>. All Rights Reserved.</p>
-    <p style="margin-top: 10px; font-size: 0.75rem;">
-        <a href="/privacy-policy.html">Privacy Policy</a> | 
-        <a href="/terms-conditions.html">Terms & Conditions</a> | 
-        <span>MahaRERA Reg No: [Your RERA Number Here]</span>
-    </p>
-    <p style="margin-top: 8px; font-size: 0.70rem; color: #64748b;">
-        Disclaimer: This landing page is managed by The Real Estate Mall for promoting the Pune Property Expo 2026. Developer logos are used for event participation representation.
-    </p> -->
+    <!-- Modal Control Script -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        // Close popup when clicking on the dark backdrop
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
