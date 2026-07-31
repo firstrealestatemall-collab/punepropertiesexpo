@@ -919,7 +919,12 @@
     <i class="fa-solid fa-phone phone-icon"></i>
     </a>
     <!-- Modal Control Script -->
-    <script>
+    <script  async src="https://www.googletagmanager.com/gtag/js?id=G-05JKHBD1CY">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-05JKHBD1CY');
+        
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
         }
