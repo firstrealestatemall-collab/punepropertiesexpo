@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pune Property Expo | Conducted by The Real Estate Mall</title>
+    <title>Pune Property Expo 2026 | Conducted by The Real Estate Mall</title>
 
-    <!-- Google-friendly Favicon Setup (Full Absolute URL) -->
+    <!-- Google-friendly Favicon Setup -->
     <link rel="icon" type="image/png" sizes="192x192" href="https://www.punepropertiesexpo.in/The-Real-Estate-Map-India-logo.png">
     <link rel="shortcut icon" type="image/png" href="https://www.punepropertiesexpo.in/The-Real-Estate-Map-India-logo.png">
     <link rel="apple-touch-icon" href="https://www.punepropertiesexpo.in/The-Real-Estate-Map-India-logo.png">
@@ -14,9 +14,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Tag Manager / Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05JKHBD1CY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-05JKHBD1CY');
+    </script>
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WNXWVRX7');
+    </script>
+
     <style>
         :root {
-            /* Dark Luxury Palette */
             --bg-dark: #0a0d14;
             --bg-surface: #111622;
             --bg-card: #171e2e;
@@ -52,7 +68,7 @@
             color: var(--text-heading);
         }
 
-        /* --- Sticky Navigation --- */
+        /* Sticky Navigation */
         header {
             background: rgba(10, 13, 20, 0.92);
             backdrop-filter: blur(12px);
@@ -130,7 +146,7 @@
             color: var(--gold-primary);
         }
 
-        /* --- Hero Section with Background Banner --- */
+        /* Hero Section */
         .hero-wrapper {
             position: relative;
             background: linear-gradient(180deg, rgba(10, 13, 20, 0.82) 40%, rgba(10, 13, 20, 0.96) 80%, var(--bg-dark) 100%), 
@@ -171,7 +187,6 @@
             color: var(--gold-primary);
         }
 
-        /* Budget Highlight Tag */
         .price-highlight-tag {
             display: inline-block;
             background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
@@ -200,9 +215,248 @@
             justify-content: center;
         }
 
-        /* --- Stats Grid --- */
+        /* Section Commons */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Photo Gallery - Infinite Right-to-Left Slider */
+        .gallery-section {
+            padding: 80px 0;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+
+        .gallery-slider {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scrollLeft 25s linear infinite;
+        }
+
+        .gallery-slider:hover .gallery-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .gallery-item {
+            width: 240px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+            background: var(--bg-card);
+            flex-shrink: 0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Google Reviews Section */
+        .reviews-section {
+            padding: 90px 8%;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 25px;
+            border-radius: 16px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            color: #000;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .reviewer-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .google-badge {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars {
+            color: #fbbc04;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .review-body {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Video Testimonials - 9:16 Vertical Reel Ratio Swipe Slider */
+        .video-section {
+            padding: 80px 8%;
+            background: var(--bg-surface);
+        }
+
+        .video-slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .video-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-primary) var(--bg-card);
+            
+            /* Center cards when total width is less than container width */
+            justify-content: center; 
+        }
+
+        /* Ensure proper left alignment when overflowing/scrolling on mobile */
+        @media (max-width: 850px) {
+            .video-slider {
+                justify-content: flex-start;
+            }
+        }
+
+        .video-slider::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .video-slider::-webkit-scrollbar-track {
+            background: var(--bg-card);
+            border-radius: 10px;
+        }
+
+        .video-slider::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 10px;
+        }
+
+        .video-card {
+            flex: 0 0 250px;
+            scroll-snap-align: start;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
+            padding: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+        }
+
+        /* 9:16 Aspect Ratio Container for Video/Reels */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-card p {
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-heading);
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .swipe-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Stats Grid */
         .stats-section {
-            padding: 0 8% 80px;
+            padding: 60px 8% 80px;
         }
 
         .stats-grid {
@@ -234,24 +488,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Global Section Title --- */
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* --- Strategic Hubs Section --- */
+        /* Hubs Section */
         .hubs-section {
             padding: 80px 8%;
             background: var(--bg-surface);
@@ -328,7 +565,7 @@
             font-weight: 600;
         }
 
-        /* --- Why Attend Section --- */
+        /* Why Attend Section */
         .why-attend-section {
             padding: 90px 8%;
         }
@@ -366,33 +603,7 @@
             color: var(--text-heading);
         }
 
-        /* --- Legacy Section --- */
-        .legacy-section {
-            padding: 80px 8%;
-            background: var(--bg-surface);
-        }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .timeline-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            padding: 30px;
-            border-radius: 14px;
-            border-top: 3px solid var(--gold-primary);
-        }
-
-        .timeline-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- VIP Form Section --- */
+        /* VIP Form Section */
         .form-section {
             padding: 90px 8%;
             background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
@@ -455,7 +666,7 @@
             background: var(--gold-hover);
         }
 
-       /* --- Footer & Legal Compliance Section --- */
+        /* Footer & Modals */
         footer {
             background: #06080d;
             border-top: 1px solid var(--border-card);
@@ -486,7 +697,6 @@
             margin-right: auto;
         }
 
-        /* --- Legal Modal Popups --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -545,8 +755,10 @@
             .hero h1 { font-size: 2.3rem; }
             nav { display: none; }
             .form-container { padding: 25px; }
+            .video-card { flex: 0 0 220px; }
         }
-        /* Floating WhatsApp Button Styling */
+
+        /* Floating Action Buttons */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -566,73 +778,42 @@
             text-decoration: none;
             transition: all 0.3s ease-in-out;
         }
-        
-        /* Hover Effect */
+
         .whatsapp-float:hover {
             background-color: #128c7e;
             color: #fff;
             transform: scale(1.1);
-            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.35);
         }
-        
-        .whatsapp-icon {
-            margin-top: 2px;
+
+        .phone-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            left: 25px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
         }
-        /* Floating Phone Button Styling (Left Side) */
-    .phone-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 25px;
-        left: 25px; /* Positions it on the left */
-        background-color: #007bff; /* Professional blue theme */
-        color: #fff;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 26px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    /* Hover Effect */
-    .phone-float:hover {
-        background-color: #0056b3;
-        color: #fff;
-        transform: scale(1.1);
-        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.35);
-    }
-    
-    .phone-icon {
-        margin-top: 1px;
-    }
-  
+
+        .phone-float:hover {
+            background-color: #0056b3;
+            color: #fff;
+            transform: scale(1.1);
+        }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05JKHBD1CY">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-05JKHBD1CY');
-    </script>
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WNXWVRX7');</script>
-    <!-- End Google Tag Manager -->
-    
 </head>
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Header -->
     <header>
@@ -640,32 +821,166 @@
             PUNE PROPERTY <span>EXPO 2026</span>
         </a>
         <nav>
+            <a href="#gallery">Past Stalls</a>
+            <a href="#reviews">Reviews</a>
             <a href="#hubs">Strategic Hubs</a>
             <a href="#why-attend">Why Attend</a>
-            <a href="#legacy">About Mall</a>
             <a href="#register">VIP Pass</a>
         </nav>
         <a href="#register" class="btn-gold">Get Free VIP Pass</a>
     </header>
 
-    <!-- Hero Section with Background Banner & Price Highlight -->
+    <!-- Hero Section -->
     <div class="hero-wrapper">
         <section class="hero">
-            <span class="event-badge">PUNE'S BIGGEST PROPERTY EXPO</span>
+            <span class="event-badge">🗓️ UPCOMING EXPO: 29TH & 30TH AUGUST 2026</span>
             <h1>Explore Your Dream Property <span>Under One Roof</span></h1>
             
-            <!-- Price Highlight Banner -->
             <div>
                 <div class="price-highlight-tag">🏢 Flats Starting From ₹70 Lakhs to ₹30 Cr</div>
             </div>
 
-            <p>Conducted by <strong>The Real Estate Mall</strong>. Over 200+ projects and 60+ top developers gathered under one roof with exclusive developer offers, zero brokerage, and instant loan approvals.</p>
+            <p>Conducted by <strong>The Real Estate Mall</strong>. Join us on <strong>29th & 30th August</strong> to explore 200+ projects and 60+ top developers with exclusive spot discounts, zero brokerage, and instant loan approvals.</p>
             <div class="hero-btns">
                 <a href="#register" class="btn-gold">Claim Free VIP Entry</a>
                 <a href="#hubs" class="btn-outline">View Expo Venues</a>
             </div>
         </section>
     </div>
+
+    <!-- Photo Gallery - Small Stall Photos Moving Left in Infinite Loop -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header">
+            <h2>Glimpses From Our Recent Expo</h2>
+            <p>Stalls & Exhibition Highlights</p>
+        </div>
+
+        <div class="gallery-slider">
+            <div class="gallery-track">
+                <!-- Set 1 of Stall Photos -->
+                <div class="gallery-item"><img src="IMG_0262.jpg" alt="Developer Stall 1"></div>
+                <div class="gallery-item"><img src="IMG_0264.jpg" alt="Developer Stall 2"></div>
+                <div class="gallery-item"><img src="IMG_0272.jpg" alt="Developer Stall 3"></div>
+                <div class="gallery-item"><img src="IMG_0273.jpg" alt="Developer Stall 4"></div>
+                <div class="gallery-item"><img src="IMG_0277.jpg" alt="Developer Stall 5"></div>
+                <div class="gallery-item"><img src="IMG_0289.jpg" alt="Developer Stall 6"></div>
+                <div class="gallery-item"><img src="IMG_0290.jpg" alt="Developer Stall 1"></div>
+                <div class="gallery-item"><img src="IMG_0294.jpg" alt="Developer Stall 2"></div>
+                <div class="gallery-item"><img src="IMG_0296.jpg" alt="Developer Stall 3"></div>
+                <div class="gallery-item"><img src="IMG_0297.jpg" alt="Developer Stall 4"></div>
+                <div class="gallery-item"><img src="IMG_0299.jpg" alt="Developer Stall 5"></div>
+                <div class="gallery-item"><img src="IMG_0300.jpg" alt="Developer Stall 6"></div>
+
+                <!-- Duplicated Set for Seamless Looping -->
+                <div class="gallery-item"><img src="IMG_0262.jpg" alt="Developer Stall 1"></div>
+                <div class="gallery-item"><img src="IMG_0264.jpg" alt="Developer Stall 2"></div>
+                <div class="gallery-item"><img src="IMG_0272.jpg" alt="Developer Stall 3"></div>
+                <div class="gallery-item"><img src="IMG_0273.jpg" alt="Developer Stall 4"></div>
+                <div class="gallery-item"><img src="IMG_0277.jpg" alt="Developer Stall 5"></div>
+                <div class="gallery-item"><img src="IMG_0289.jpg" alt="Developer Stall 6"></div>
+                <div class="gallery-item"><img src="IMG_0290.jpg" alt="Developer Stall 1"></div>
+                <div class="gallery-item"><img src="IMG_0294.jpg" alt="Developer Stall 2"></div>
+                <div class="gallery-item"><img src="IMG_0296.jpg" alt="Developer Stall 3"></div>
+                <div class="gallery-item"><img src="IMG_0297.jpg" alt="Developer Stall 4"></div>
+                <div class="gallery-item"><img src="IMG_0299.jpg" alt="Developer Stall 5"></div>
+                <div class="gallery-item"><img src="IMG_0300.jpg" alt="Developer Stall 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Embedded Google Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="section-header">
+            <h2>Trusted By Pune Homebuyers</h2>
+            <p>Rated 4.8 ★ On Google Reviews</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">A</div>
+                    <div class="reviewer-info">
+                        <h4>Amit Deshmukh</h4>
+                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-body">"Found my dream 3 BHK in Baner at the expo! Comparing multiple developers under one roof saved us weeks of site visits."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">P</div>
+                    <div class="reviewer-info">
+                        <h4>Priya Nair</h4>
+                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-body">"Zero brokerage assistance and direct spot booking offers made a huge difference. Highly recommend attending."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">R</div>
+                    <div class="reviewer-info">
+                        <h4>Rajesh Kulkarni</h4>
+                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-body">"Great experience. Spoke directly with project heads for Kharadi properties and got transparent pricing."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials - 9:16 Vertical Reel Ratio Swipe Slider -->
+    <section class="video-section">
+        <div class="section-header">
+            <h2>Video Testimonials</h2>
+            <p>Hear Directly From Visitors & Homebuyers</p>
+        </div>
+
+        <div class="video-slider-container">
+            <div class="video-slider">
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video controls preload="none" poster="IMG_9117.00_00_09_38.Still001.jpg" playsinline>
+                            <source src="IMG_9117_1.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+                    <p>Exploring Baner & Kharadi Projects</p>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video controls preload="none" poster="IMG_9117.00_00_29_29.Still002.jpg" playsinline>
+                            <source src="IMG_9117.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+                    <p>How Rahul Saved ₹2.5 Lakhs On His Home</p>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video controls preload="none" IMG_9117.00_00_44_55.Still003.jpg" playsinline>
+                            <source src="IMG_9117_2.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+                    <p>How Rahul Saved ₹2.5 Lakhs On His Home</p>
+                </div>
+
+            </div>
+
+            <div class="swipe-hint">
+                <i class="fa-solid fa-arrow-left"></i> Swipe horizontally to view more testimonials <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+    </section>
 
     <!-- Stats Grid -->
     <section class="stats-section">
@@ -680,7 +995,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">4</div>
-                <div class="stat-label">TYPES OF PROPERTIES</div>
+                <div class="stat-label">Types of Properties</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">0%</div>
@@ -693,15 +1008,14 @@
         </div>
     </section>
 
-    <!-- Strategic Hubs of Choice Section with Mall Images -->
+    <!-- Strategic Hubs Section -->
     <section id="hubs" class="hubs-section">
         <div class="section-header">
             <h2>Strategic Hubs of Choice</h2>
-            <p>We've selected two of Pune's most iconic commercial locations to host this year's expo.</p>
+            <p>Host Locations For The 29th & 30th August Expo</p>
         </div>
 
         <div class="hubs-grid">
-            <!-- Hub 1: Baner -->
             <div class="hub-card">
                 <div class="hub-img" style="background-image: url('the-real-estate-mall-baner.jpg');"></div>
                 <div class="hub-body">
@@ -724,7 +1038,6 @@
                 </div>
             </div>
 
-            <!-- Hub 2: Kharadi -->
             <div class="hub-card">
                 <div class="hub-img" style="background-image: url('the-real-estate-mall-kharadi.jpg');"></div>
                 <div class="hub-body">
@@ -748,15 +1061,8 @@
             </div>
         </div>
     </section>
-    <section style="padding: 40px 8%; text-align: center; background: var(--bg-surface); border-top: 1px solid var(--border-card);">
-        <p style="color: var(--gold-primary); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 2rem; letter-spacing: 1px; margin-bottom: 8px;">
-            FEATURED DEVELOPER PROJECTS
-        </p>
-        <p style="color: var(--text-body); max-width: 850px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
-            Discover projects from 60+ top developers across Pune including Nyati, Godrej, Rohan Builders, VTP Realty, Kolte Patil, Majestique Landmarks, and many more.
-        </p>
-    </section>
-    <!-- Why Should You Attend Section (New) -->
+
+    <!-- Why Attend Section -->
     <section id="why-attend" class="why-attend-section">
         <div class="section-header">
             <h2>Why Should You Attend This Expo?</h2>
@@ -787,166 +1093,103 @@
         </div>
     </section>
 
-    <!-- Legacy / Real Estate Mall Section -->
-    <section id="legacy" class="legacy-section">
+    <!-- VIP Registration Form Section -->
+    <section id="register" class="form-section">
         <div class="section-header">
-            <h2>Carry Your Cheque Book For Spot Booking Benefits</h2>
-            <p>Conducted by The Real Estate Mall - India's leading unified property advisory platform</p>
+            <h2>Your Premium Property Journey Starts Here</h2>
+            <p>Register below for your Free VIP Pass for 29th & 30th August.</p>
         </div>
 
-        <div class="timeline-grid">
-            <div class="timeline-box">
-                <h3>Pan-India & Global Reach</h3>
-                <p>Connecting homebuyers and investors across Pune, Mumbai, and international investment desks in Dubai.</p>
-            </div>
-            <div class="timeline-box">
-                <h3>75 Quality Checks</h3>
-                <p>Every project featured at the Expo undergoes rigorous legal, structural, and financial title verification.</p>
-            </div>
-            <div class="timeline-box">
-                <h3>Zero Fee Guarantee</h3>
-                <p>Enjoy transparent, unbiased property consulting directly from top developers with zero brokerage fees.</p>
-            </div>
+        <div class="form-container">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3"> 
+                <input type="hidden" name="subject" value="New Pune Property Expo VIP Lead (29-30 Aug)">
+
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" name="Full Name" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" name="Phone Number" placeholder="+91 98765 43210" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Venue for Visit *</label>
+                    <select name="Venue" required>
+                        <option value="">-- Select Expo Location --</option>
+                        <option value="Baner - Achalare House">The Real Estate Mall - Baner</option>
+                        <option value="Kharadi - Nyati Plaza">The Real Estate Mall - Kharadi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Target Budget Range</label>
+                    <select name="Budget">
+                        <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                        <option value="₹1 Crore - ₹3 Crores">₹1 Crore - ₹3 Crores</option>
+                        <option value="₹3 Crores - ₹10 Crores">₹3 Crores - ₹10 Crores</option>
+                        <option value="₹10 Crores - ₹30 Crores">Luxury (₹10 Cr - ₹30 Cr)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Claim Free VIP Entry Pass</button>
+            </form>
         </div>
     </section>
 
-<!-- VIP Registration Form Section -->
-<section id="register" class="form-section">
-    <div class="section-header">
-        <h2>Your Premium Property Journey Starts Here</h2>
-        <p>Register below to receive your Free VIP Pass & unlock Expo-exclusive pricing.</p>
-    </div>
-
-    <div class="form-container">
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <!-- ⚠️ REPLACE THIS WITH YOUR ACTUAL WEB3FORMS ACCESS KEY -->
-            <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3"> 
-
-            <!-- Email Subject -->
-            <input type="hidden" name="subject" value="New Pune Property Expo VIP Lead">
-
-            <!-- Custom Success Redirect (Optional: Redirect to a dedicated thank-you page) -->
-            <!-- <input type="hidden" name="redirect" value="https://punepropertiesexpo.in/thank-you.html"> -->
-
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" name="Full Name" placeholder="e.g. Rahul Sharma" required>
-            </div>
-
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" name="Phone Number" placeholder="+91 98765 43210" required>
-            </div>
-
-            <!-- <div class="form-group">
-                <label>Email Address *</label>
-                <input type="email" name="Email" placeholder="rahul@example.com" required>
-            </div> -->
-
-            <div class="form-group">
-                <label>Preferred Venue for Visit *</label>
-                <select name="Venue" required>
-                    <option value="">-- Select Expo Location --</option>
-                    <option value="Baner - Achalare House">The Real Estate Mall - Baner</option>
-                    <option value="Kharadi - Nyati Plaza">The Real Estate Mall - Kharadi</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Target Budget Range</label>
-                <select name="Budget">
-                    <!-- <option value="₹28 Lakhs - ₹50 Lakhs">₹28 Lakhs - ₹50 Lakhs</option> -->
-                    <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
-                    <option value="₹1 Crore - ₹3 Crores">₹1 Crore - ₹3 Crores</option>
-                    <option value="₹3 Crores - ₹10 Crores">₹3 Crores - ₹10 Crores</option>
-                    <option value="₹10 Crores - ₹30 Crores">Luxury (₹10 Cr - ₹30 Cr)</option>
-                </select>
-            </div>
-
-            <button type="submit" class="submit-btn">Claim Free VIP Entry Pass</button>
-        </form>
-    </div>
-</section>
     <!-- Footer -->
-    <footer>
-    <!-- Footer with Legal Compliance Links -->
     <footer>
         <p>&copy; 2026 Organized by <a href="https://www.realestatemallindia.com/" target="_blank">The Real Estate Mall</a>. All rights reserved.</p>
         <p style="margin-top: 6px;">Baner Road & Kharadi IT Hub, Pune, Maharashtra.</p>
         
-        <!-- Privacy Policy & Terms Links required by Google Ads -->
         <p style="margin-top: 12px;">
             <a onclick="openModal('privacyModal')">Privacy Policy</a> | 
             <a onclick="openModal('termsModal')">Terms & Conditions</a>
         </p>
 
-        <!-- MahaRERA & Corporate Disclaimer -->
         <div class="legal-disclaimer">
             <p><strong>MahaRERA Reg No:</strong> A041262500652 </p>
             <p>Disclaimer: This landing page is managed by <strong>The Real Estate Mall</strong> to promote projects participating in the Pune Property Expo 2026. All developer logos, project details, and images are used for representation purposes as event partners. Prices and offers are subject to change according to developer/MahaRERA guidelines.</p>
         </div>
     </footer>
 
-    <!-- Privacy Policy Modal Window -->
+    <!-- Modals -->
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
             <h3>Privacy Policy</h3>
             <p>At Pune Property Expo (conducted by <strong>The Real Estate Mall</strong>), we respect your privacy and are committed to protecting your personal data.</p>
             <p><strong>Information Collection:</strong> When you register on this site, we collect details such as your Name, Phone Number, Venue Choice, and Budget Preference.</p>
-            <p><strong>Use of Information:</strong> The details provided are solely used to issue your Free VIP Pass, communicate event updates, and provide personalized real estate consultation related to the expo.</p>
-            <p><strong>Data Security:</strong> We do not sell, rent, or trade your personal information to third-party marketers. By submitting your form, you authorize our team to contact you via Phone Call, WhatsApp, or SMS.</p>
+            <p><strong>Use of Information:</strong> Details provided are solely used to issue your Free VIP Pass, communicate event updates, and provide real estate consultation.</p>
         </div>
     </div>
 
-    <!-- Terms & Conditions Modal Window -->
     <div id="termsModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
             <h3>Terms & Conditions</h3>
-            <p>By registering on this website for the Pune Property Expo 2026, you agree to the following terms:</p>
+            <p>By registering for the Pune Property Expo 2026, you agree to the following terms:</p>
             <ul>
-                <li><strong>VIP Passes:</strong> VIP Entry Passes are complimentary and issued on a first-come, first-served basis according to venue capacity.</li>
-                <li><strong>Offers & Pricing:</strong> All property prices, discount structures, and spot-booking offers featured at the expo are provided directly by participating developers and are subject to availability.</li>
-                <li><strong>Role of Host:</strong> The Real Estate Mall acts as an event host and real estate advisor. All legal agreements and purchases are executed directly between the homebuyer and the respective project developer under MahaRERA regulations.</li>
+                <li><strong>VIP Passes:</strong> Complimentary VIP Entry Passes are issued on a first-come, first-served basis.</li>
+                <li><strong>Role of Host:</strong> The Real Estate Mall acts as an event host and real estate advisor under MahaRERA regulations.</li>
             </ul>
         </div>
     </div>
-    </footer>
-    <a href="https://wa.me/918755887558?text=Hi!%20I%20am%20interested%20in%20Pune%20Property%20Expo." 
-    class="whatsapp-float" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    aria-label="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+
+    <!-- Floating Action Buttons -->
+    <a href="https://wa.me/918755887558?text=Hi!%20I%20am%20interested%20in%20Pune%20Property%20Expo." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <!-- Floating Phone Call Button (Left Side) -->
-    <a href="tel:+918755887558" 
-   class="phone-float" 
-   aria-label="Call us now">
-    <i class="fa-solid fa-phone phone-icon"></i>
+    <a href="tel:+918755887558" class="phone-float" aria-label="Call us now">
+        <i class="fa-solid fa-phone"></i>
     </a>
-    <!-- Modal Control Script -->
+
     <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-        // Close popup when clicking on the dark backdrop
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.style.display = 'none';
-            }
-        }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(e) { if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none'; }
     </script>
-    
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
 </body>
 </html>
