@@ -76,64 +76,53 @@
             color: var(--text-heading);
         }
 
-        /* Sticky Navigation */
+        /* --- Header Fixes --- */
+
+        /* Base Header Layout */
         header {
-            background: rgba(10, 13, 20, 0.92);
+            background: rgba(10, 13, 20, 0.95);
             backdrop-filter: blur(12px);
-            padding: 18px 8%;
+            padding: 12px 5%;
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-
+        
         .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            text-decoration: none;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            white-space: nowrap; /* Prevents logo from breaking into weird lines */
         }
-
-        .logo span {
-            color: var(--gold-primary);
+        
+        /* Hide navigation links on mobile completely to clean up space */
+        @media (max-width: 900px) {
+            header nav {
+                display: none !important;
+            }
         }
-
-        nav a {
-            color: var(--text-body);
-            text-decoration: none;
-            margin-left: 28px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--gold-primary);
-        }
-
-        .btn-gold {
-            background: var(--gold-primary);
-            color: #000;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-gold:hover {
-            background: var(--gold-hover);
-            transform: translateY(-2px);
+        
+        /* Mobile Button & Layout Tuning */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 4%;
+            }
+        
+            .logo {
+                font-size: 0.95rem;
+            }
+        
+            header .btn-gold {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+                white-space: nowrap; /* Prevents text from breaking into 4 rows */
+                text-align: center;
+                border-radius: 6px;
+            }
         }
 
         .btn-outline {
