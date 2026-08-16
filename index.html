@@ -759,11 +759,108 @@
             line-height: 1;
         }
 
-        @media (max-width: 850px) {
-            .hero h1 { font-size: 2.3rem; }
-            nav { display: none; }
-            .form-container { padding: 25px; }
-            .video-card { flex: 0 0 220px; }
+        /* Mobile Optimization & Responsive Rules */
+        @media (max-width: 768px) {
+            /* Header Adjustments */
+            header {
+                padding: 12px 5%;
+            }
+            .logo {
+                font-size: 1.05rem;
+            }
+        
+            /* Hero Section Scaling */
+            .hero {
+                padding: 120px 5% 50px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.25;
+            }
+            .event-badge {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+            .price-highlight-tag {
+                font-size: 0.95rem;
+                padding: 6px 16px;
+                white-space: normal;
+            }
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 25px;
+            }
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            .hero-btns .btn-gold, 
+            .hero-btns .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+        
+            /* Section Headers */
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            .section-header p {
+                font-size: 0.9rem;
+            }
+        
+            /* Video Reel Section (9:16 Mobile Viewport) */
+            .video-section {
+                padding: 50px 4%;
+            }
+            .video-slider {
+                justify-content: flex-start; /* Enables smooth scrolling on mobile */
+                gap: 14px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .video-card {
+                flex: 0 0 78vw; /* Takes optimal width on mobile screen */
+                max-width: 280px;
+            }
+        
+            /* Form Optimizations */
+            .form-section {
+                padding: 50px 4%;
+            }
+            .form-container {
+                padding: 20px 16px;
+            }
+            .form-group input, 
+            .form-group select {
+                font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+            }
+        
+            /* Floating Contact Buttons */
+            .whatsapp-float, .phone-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 18px;
+            }
+            .whatsapp-float { right: 18px; }
+            .phone-float { left: 18px; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on small phones */
+                gap: 12px;
+            }
+            .stat-card {
+                padding: 15px 10px;
+            }
+            .stat-number {
+                font-size: 1.75rem;
+            }
         }
 
         /* Floating Action Buttons */
