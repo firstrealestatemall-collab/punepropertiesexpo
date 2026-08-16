@@ -135,6 +135,70 @@
             background: var(--gold-hover);
             transform: translateY(-2px);
         }
+        
+        /* Header Right Alignment */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-heading);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* Mobile Dropdown Navigation overlay */
+        .mobile-nav-overlay {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 13, 20, 0.98);
+            border-bottom: 1px solid var(--border-card);
+            padding: 15px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+
+        .mobile-nav-overlay a {
+            color: var(--text-heading);
+            text-decoration: none;
+            padding: 12px 8%;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .mobile-nav-overlay a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-primary);
+        }
+
+        /* Responsive Behavior */
+        @media (max-width: 900px) {
+            .desktop-nav {
+                display: none; /* Hides desktop links when space is restricted */
+            }
+            .menu-toggle {
+                display: block; /* Shows 3-line bar icon */
+            }
+            .header-btn {
+                white-space: nowrap;
+                padding: 8px 14px;
+                font-size: 0.78rem;
+            }
+        }
 
         .btn-outline {
             background: transparent;
@@ -925,14 +989,32 @@
         <a href="https://www.punepropertiesexpo.in/" class="logo" target="_blank">
             PUNE PROPERTY <span>EXPO 2026</span>
         </a>
-        <nav>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
             <a href="#gallery">Past Stalls</a>
             <a href="#reviews">Reviews</a>
             <a href="#hubs">Strategic Hubs</a>
             <a href="#why-attend">Why Attend</a>
             <a href="#register">VIP Pass</a>
         </nav>
-        <a href="#register" class="btn-gold">Get Free VIP Pass</a>
+        
+        <div class="header-right">
+            <a href="#register" class="btn-gold header-btn">Get Free VIP Pass</a>
+            <!-- Hamburger Icon Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobileNav">
+            <a href="#gallery" onclick="closeNav()">Past Stalls</a>
+            <a href="#reviews" onclick="closeNav()">Reviews</a>
+            <a href="#hubs" onclick="closeNav()">Strategic Hubs</a>
+            <a href="#why-attend" onclick="closeNav()">Why Attend</a>
+            <a href="#register" onclick="closeNav()">VIP Pass</a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -1317,6 +1399,30 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         window.onclick = function(e) { if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none'; }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            // Toggle icon between hamburger and close 'X' icon
+            const icon = menuToggle.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        function closeNav() {
+            mobileNav.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+
     </script>
 </body>
 </html>
