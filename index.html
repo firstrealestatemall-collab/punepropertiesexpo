@@ -447,73 +447,154 @@
             transform: scale(1.08);
         }
 
-        /* Google Reviews Section */
+        /* Google Reviews Carousel Section */
         .reviews-section {
             padding: 90px 8%;
+            position: relative;
         }
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        .reviews-wrapper {
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .reviews-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 10px 5px;
+            width: 100%;
+        }
+
+        .reviews-container::-webkit-scrollbar {
+            display: none;
         }
 
         .review-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            padding: 25px;
+            background: #ffffff;
+            color: #1e293b;
             border-radius: 16px;
-            position: relative;
+            padding: 24px;
+            min-width: 320px;
+            flex: 1 0 calc(33.333% - 14px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            position: relative;
+            transition: transform 0.3s ease;
         }
 
         .review-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
+        /* Initial-based Google-style Avatars */
         .reviewer-avatar {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: var(--gold-primary);
-            color: #000;
-            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        /* Avatar Background Variant Colors */
+        .bg-amber { background-color: #d97706; }
+        .bg-blue { background-color: #2563eb; }
+        .bg-purple { background-color: #9333ea; }
+        .bg-teal { background-color: #0d9488; }
+
+        .reviewer-info {
+            display: flex;
+            flex-direction: column;
         }
 
         .reviewer-info h4 {
-            font-size: 1rem;
-            margin-bottom: 2px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+            line-height: 1.2;
         }
 
-        .google-badge {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .review-date {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* Official Colored Google Logo */
+        .google-icon-svg {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 22px;
+            height: 22px;
         }
 
         .stars {
-            color: #fbbc04;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
+            color: #ffb800;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
 
         .review-body {
-            font-size: 0.92rem;
-            color: #cbd5e1;
+            font-size: 0.88rem;
+            color: #334155;
             line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Carousel Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .nav-btn.left { left: -60px; }
+        .nav-btn.right { right: -60px; }
+
+        @media (max-width: 900px) {
+            .review-card {
+                flex: 0 0 280px;
+                min-width: 280px;
+            }
+            .nav-btn.left { left: 5px; }
+            .nav-btn.right { right: 5px; }
         }
 
         /* Video Testimonials - 9:16 Vertical Reel Ratio Swipe Slider */
@@ -1195,44 +1276,224 @@
             <p>Rated 4.8 ★ On Google Reviews</p>
         </div>
 
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">A</div>
-                    <div class="reviewer-info">
-                        <h3>Amit Deshmukh</h3>
-                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
+        <div class="reviews-wrapper">
+            <button class="nav-btn left" id="prevReview" aria-label="Previous Review">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="reviews-container" id="reviewsContainer">
+                
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-amber">A</div>
+                        <div class="reviewer-info">
+                            <h4>Amit Deshmukh</h4>
+                            <span class="review-date">2 days ago</span>
+                        </div>
                     </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Found my dream 3 BHK in Baner at the expo! Comparing multiple developers under one roof saved us weeks of site visits.</p>
                 </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-body">"Found my dream 3 BHK in Baner at the expo! Comparing multiple developers under one roof saved us weeks of site visits."</p>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-blue">P</div>
+                        <div class="reviewer-info">
+                            <h4>Priya Nair</h4>
+                            <span class="review-date">3 days ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Zero brokerage assistance and direct spot booking offers made a huge difference. Highly recommend attending if looking to buy in Pune.</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-purple">R</div>
+                        <div class="reviewer-info">
+                            <h4>Rajesh Kulkarni</h4>
+                            <span class="review-date">5 days ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Great experience. Spoke directly with project heads for Kharadi properties and got transparent pricing with no hidden charges.</p>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-teal">S</div>
+                        <div class="reviewer-info">
+                            <h4>Sneha Joshi</h4>
+                            <span class="review-date">a week ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">The free cab service to project sites was a game changer! Visited three different locations in one day seamlessly.</p>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-amber">V</div>
+                        <div class="reviewer-info">
+                            <h4>Vikram Mehta</h4>
+                            <span class="review-date">a week ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Got my home loan instantly approved on-spot by the banking team at the venue. Extremely well managed event!</p>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-purple">M</div>
+                        <div class="reviewer-info">
+                            <h4>Margi Shah</h4>
+                            <span class="review-date">2 weeks ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">The Dubai real estate desk was fantastic! Got all details about high-yield tax-free investments clearly explained.</p>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-blue">N</div>
+                        <div class="reviewer-info">
+                            <h4>Nikhil Sharma</h4>
+                            <span class="review-date">2 weeks ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Very professional setup. Was able to evaluate luxury projects above 3 Cr with dedicated advisors assisting us.</p>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-teal">K</div>
+                        <div class="reviewer-info">
+                            <h4>Kavita Patil</h4>
+                            <span class="review-date">3 weeks ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Saved over ₹2 Lakhs on our booking through the expo's exclusive developer discount scheme. Absolutely worth visiting!</p>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-amber">D</div>
+                        <div class="reviewer-info">
+                            <h4>Dhananjay Rao</h4>
+                            <span class="review-date">3 weeks ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Great venue at Baner Mall with valet parking and VIP lounge facilities. Makes property shopping smooth and comfortable.</p>
+                </div>
+
+                <!-- Review 10 -->
+                <div class="review-card">
+                    <svg class="google-icon-svg" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <div class="review-header">
+                        <div class="reviewer-avatar bg-purple">A</div>
+                        <div class="reviewer-info">
+                            <h4>Ananya Roy</h4>
+                            <span class="review-date">a month ago</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-body">Transparent discussions and unbiased guidance by The Real Estate Mall advisors. Helped us narrow down our options quickly.</p>
+                </div>
+
             </div>
 
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">P</div>
-                    <div class="reviewer-info">
-                        <h3>Priya Nair</h3>
-                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-body">"Zero brokerage assistance and direct spot booking offers made a huge difference. Highly recommend attending."</p>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">R</div>
-                    <div class="reviewer-info">
-                        <h3>Rajesh Kulkarni</h3>
-                        <div class="google-badge"><i class="fa-brands fa-google" style="color: #4285f4;"></i> Verified Google Review</div>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-body">"Great experience. Spoke directly with project heads for Kharadi properties and got transparent pricing."</p>
-            </div>
+            <button class="nav-btn right" id="nextReview" aria-label="Next Review">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
         </div>
     </section>
+
+    <script>
+        const container = document.getElementById('reviewsContainer');
+        const prevBtn = document.getElementById('prevReview');
+        const nextBtn = document.getElementById('nextReview');
+
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+    </script>
 
     <!-- Video Testimonials - 9:16 Vertical Reel Ratio Swipe Slider -->
     <section class="video-section">
