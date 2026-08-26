@@ -1,0 +1,14 @@
+# Allow all standard web crawlers and AI search agents
+User-agent: *
+Allow: /
+
+# Explicitly allow AI documentation and meta files
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Disallow access to private assets or script directories if any
+# Disallow: /admin/
+# Disallow: /private/
+
+# XML Sitemap Location
+Sitemap: https://www.punepropertiesexpo.in/sitemap.xml
