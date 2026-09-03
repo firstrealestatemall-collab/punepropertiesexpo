@@ -12,3 +12,7 @@ Allow: /llms-full.txt
 
 # XML Sitemap Location
 Sitemap: https://www.punepropertiesexpo.in/sitemap.xml
+
+User‑agent: AdsBot‑Google
+User‑agent: Googlebot
+User‑agent: Googlebot‑Image
