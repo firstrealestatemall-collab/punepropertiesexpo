@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.    
     <!-- Primary Meta Tags -->
     <title>Pune Property Expo on 19th and 20th September 2026</title>
     <meta name="description" content="Join Pune Property Expo 2026 on 19th & 20th September. Explore 200+ projects from 60+ top developers with spot discounts, zero brokerage, & instant loan approvals.">
@@ -313,12 +312,12 @@
         /* Hero Section */
         .hero-wrapper {
             position: relative;
-            background: linear-gradient(180deg, rgba(10, 13, 20, 0.82) 40%, rgba(10, 13, 20, 0.96) 800%, var(--bg-dark) 100%), 
+            background: linear-gradient(180deg, rgba(10, 13, 20, 0.65) 40%, rgba(10, 13, 20, 0.96) 800%, var(--bg-dark) 100%), 
                         url('expo2.png') center/cover no-repeat;
         }
 
         .hero {
-            padding: 120px 8% 80px;
+            padding: 120px 8% 40px;
             text-align: center;
             max-width: 1050px;
             margin: 0 auto;
@@ -332,15 +331,28 @@
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-weight: 400;
+            margin-top: 50px;
+            margin-bottom: 50px;
             letter-spacing: 0.5px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(0.5px);
         }
 
         .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        
+        .hero h1 span{
+            font-family: 'Lato', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 1;
+            font-style: italic;
             line-height: 1.15;
             margin-bottom: 15px;
             letter-spacing: -1px;
@@ -354,9 +366,10 @@
         .price-highlight-tag {
             display: inline-block;
             background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
-            color: #000;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
+            color: #272626;
+            font family: Arial, sans-serif;
+
+            font-size: 1rem;
             font-weight: 800;
             padding: 8px 24px;
             border-radius: 30px;
@@ -1194,22 +1207,18 @@
     <div class="hero-wrapper">
         <section class="hero">
             <!-- 1. Event Badge -->
-            <span class="event-badge">🗓️ UPCOMING EXPO: 19th & 20th September 2026</span>
+            <span class="event-badge">UPCOMING EXPO: 19th & 20th September 2026</span>
             
             <!-- 2. Primary Heading -->
             <h1>Explore Your Dream Property <span>Under One Roof</span></h1>
             
             <!-- 3. Price Highlight Tag (Cleaned Wrapper) -->
-            <div class="price-highlight-tag">🏢 Flats Starting From ₹70 Lakhs to ₹30 Cr</div>
-
-            <!-- 4. Focused Body Text (Removed Duplicated Phrases) -->
-            <p>Conducted by <strong>The Real Estate Mall</strong>. Connect with 60+ top developers to explore 200+ residential and commercial projects with exclusive spot discounts, zero brokerage, and instant loan approvals.</p>
+            <div class="price-highlight-tag">Flats Starting From ₹70 Lakhs to ₹30 Cr</div>
 
             <!-- 5. AI Direct Answer / Summary Box (Positioned Before Buttons) -->
-            <div class="ai-summary-box" style="background: rgba(212, 175, 55, 0.08); border-left: 4px solid var(--gold-primary); padding: 14px 18px; border-radius: 6px; margin: 0 auto 25px auto; max-width: 780px; text-align: left;">
-                <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-heading);">
-                    <strong>Event Overview:</strong> Pune Property Expo 2026 is a free 2-day real estate event held on September 19–20, 2026. Hosted by <em>The Real Estate Mall</em> across Baner & Kharadi hubs, featuring 200+ properties priced from ₹70 Lakhs to ₹30 Cr.
-                </p>
+            <div class="ai-summary-box" style="background: rgba(212, 175, 55, 0.08); backdrop-filter: blur(5px); padding: 14px 18px; border-radius: 10px; margin: 0 auto 25px auto; max-width: 700px; text-align: center;">
+                <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-heading); font-family: "Times New Roman", Georgia, serif;">
+                The Pune Property Expo 2026, a free two day event hosted by The Real Estate Mall at its Baner and Kharadi hubs on September 19 & 20, features over 60 top developers showcasing 200+ residential and commercial projects priced from ₹70 Lakhs to ₹30 Crores. Attendees can access exclusive benefits like spot booking discounts, zero brokerage, and instant bank loan approvals.</p>
             </div>
 
             <!-- 6. Action Call-to-Action Buttons (At the Bottom for Higher Conversion) -->
@@ -1810,5 +1819,31 @@
         }
 
     </script>
+"tel:+918755887558" 
+   class="phone-float" 
+   aria-label="Call us now">
+    <i class="fa-solid fa-phone phone-icon"></i>
+    </a>
+    <!-- Modal Control Script -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        // Close popup when clicking on the dark backdrop
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
 </body>
 </html>
