@@ -1699,7 +1699,15 @@
 
                 <div class="form-group">
                     <label>Phone Number *</label>
-                    <input type="tel" name="Phone Number" placeholder="+91 98765 43210" required>
+                    <input 
+                        type="tel" 
+                        name="Phone Number" 
+                        placeholder="e.g. 9876543210"  
+                        minlength="10" 
+                        maxlength="10" 
+                        inputmode="numeric" 
+                        title="Please enter a valid phone number" 
+                        required>
                 </div>
 
                 <div class="form-group">
