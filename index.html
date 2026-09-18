@@ -758,6 +758,19 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+        @media (max-width: 1100px) {
+            .stats-grid {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 15px;
+                scroll-snap-type: x mandatory;
+            }
+            .stat-card {
+                min-width: 165px;
+                flex: 0 0 auto;
+                scroll-snap-align: start;
+            }
+        }
 
         /* Hubs Section */
         .hubs-section {
