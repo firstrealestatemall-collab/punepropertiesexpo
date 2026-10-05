@@ -1305,6 +1305,27 @@
         color: #ffffff; /* Contrast text against dark/glass backdrop */
         }
 
+                /* Mobile responsive safeguards */
+        @media (max-width: 768px) {
+            .popup-overlay {
+                padding: 70px 15px 20px 15px; /* Top padding prevents overlap with fixed nav bar */
+                align-items: flex-start; /* Align near top on mobile so long forms scroll naturally */
+            }
+
+            .popup-container {
+                padding: 30px 18px 20px 18px;
+                max-height: 80vh;
+            }
+
+            .popup-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .popup-header p {
+                font-size: 0.88rem;
+                margin-bottom: 15px;
+            }
+        }
 
     </style>
 </head>
