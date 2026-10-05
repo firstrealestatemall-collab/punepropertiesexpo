@@ -1305,27 +1305,37 @@
         color: #ffffff; /* Contrast text against dark/glass backdrop */
         }
 
-                /* Mobile responsive safeguards */
-        @media (max-width: 768px) {
-            .popup-overlay {
-                padding: 70px 15px 20px 15px; /* Top padding prevents overlap with fixed nav bar */
-                align-items: flex-start; /* Align near top on mobile so long forms scroll naturally */
-            }
-
-            .popup-container {
-                padding: 30px 18px 20px 18px;
-                max-height: 80vh;
-            }
-
-            .popup-header h2 {
-                font-size: 1.4rem;
-            }
-
-            .popup-header p {
-                font-size: 0.88rem;
-                margin-bottom: 15px;
-            }
+       @media (max-width: 768px) {
+        .popup-overlay {
+            padding: 60px 15px 15px 15px; 
+            align-items: center; /* Centers the modal vertically below the header */
         }
+    
+        .popup-container {
+            padding: 20px 16px 16px 16px; /* Reduced internal padding */
+            max-width: 360px; /* Restricts the card width */
+            width: 88%;
+            max-height: 75vh; /* Reduced max height */
+        }
+    
+        .popup-header h2 {
+            font-size: 1.2rem; /* Scaled down heading */
+            margin-bottom: 4px;
+        }
+    
+        .popup-header p {
+            font-size: 0.8rem; /* Scaled down description */
+            margin-bottom: 10px;
+        }
+    
+        /* Optional: Scale down form fields and buttons for a tighter layout */
+        .popup-container input,
+        .popup-container select,
+        .popup-container button {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+    }
 
     </style>
 </head>
