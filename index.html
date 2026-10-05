@@ -1191,9 +1191,179 @@
             color: #fff;
             transform: scale(1.1);
         }
+        /* Entry Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .popup-container {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .popup-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 26px;
+            color: var(--text-heading);
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .popup-close-btn:hover {
+            color: var(--gold-primary);
+        }
+
+        .popup-header h2 {
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 6px;
+        }
+
+        .popup-header p {
+            font-size: 1rem;
+            color: var(--text-heading);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .popup-container .form-group {
+            text-align: left;
+        }
+
+        /* Hidden by default */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            
+            /* Background blur outside the form */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            /* Smooth fade-in transition */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Active class applied by JavaScript after 1 second */
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Full-screen fireworks canvas */
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Sharp Form Container */
+        .popup-container, .form-container {
+        position: relative;
+        z-index: 20; /* Keep form elements above the canvas */
+        /* Frosted Glass Effect */
+        background: rgba(255, 255, 255, 0.15); /* Light translucent white base */
+        backdrop-filter: blur(16px) saturate(180%); /* Blurs fireworks background behind form */
+        -webkit-backdrop-filter: blur(16px) saturate(180%); /* Safari support */
+        padding: 30px;
+        color: #ffffff; /* Contrast text against dark/glass backdrop */
+        }
+
+
     </style>
 </head>
 <body>
+    <!-- Entry Enquiry Popup -->
+    <div id="entryExpoPopup" class="popup-overlay">
+        <canvas id="fireworksCanvas"></canvas>
+        <div class="popup-container">
+            <span class="popup-close-btn" onclick="closeExpoPopup()">&times;</span>
+            <div class="popup-header">
+                <h2>Pune's Biggest Diwali EXPO</h2>
+                <p>Get Mega Discounts and Special Offers</p>
+            </div>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3"> 
+                <input type="hidden" name="subject" value="New Diwali EXPO Enquiry Lead">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="Full Name" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input 
+                        type="tel" 
+                        name="Phone Number" 
+                        placeholder="e.g. 9876543210"  
+                        minlength="10" 
+                        maxlength="10" 
+                        inputmode="numeric" 
+                        title="Please enter a valid phone number" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Venue for Visit</label>
+                    <select name="Venue" required>
+                        <option value="">-- Select Expo Location --</option>
+                        <option value="Baner - Achalare House">The Real Estate Mall - Baner</option>
+                        <option value="Kharadi - Nyati Plaza">The Real Estate Mall - Kharadi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select name="Budget">
+                        <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                        <option value="₹1 Crore - ₹3 Crores">₹1 Crore - ₹3 Crores</option>
+                        <option value="₹3 Crores - ₹10 Crores">₹3 Crores - ₹10 Crores</option>
+                        <option value="₹10 Crores - ₹30 Crores">Luxury (₹10 Cr - ₹30 Cr)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Claim Mega Offer Pass</button>
+            </form>
+        </div>
+    </div>
+
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Header -->
@@ -1895,7 +2065,115 @@
                 event.target.style.display = 'none';
             }
         }
+        
+        function closeExpoPopup() {
+            document.getElementById('entryExpoPopup').style.display = 'none';
+        }
     </script>
+    <script>
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+    let fireworksInterval = null;
+    let animationFrameId = null;
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.radius = Math.random() * 3 + 1;
+            this.speedX = (Math.random() - 0.5) * 8;
+            this.speedY = (Math.random() - 0.5) * 8;
+            this.alpha = 1;
+            this.decay = Math.random() * 0.015 + 0.008;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = this.color;
+            ctx.fill();
+            ctx.restore();
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.speedY += 0.05;
+            this.alpha -= this.decay;
+        }
+    }
+
+    const colors = ['#d4af37', '#ff4500', '#00e5ff', '#ff007f', '#76ff03', '#ffd700'];
+
+    function createFirework() {
+        const side = Math.random() > 0.5 ? 1 : -1;
+        const x = side > 0 
+            ? Math.random() * (canvas.width * 0.25) 
+            : canvas.width - (Math.random() * (canvas.width * 0.25));
+        const y = Math.random() * (canvas.height * 0.6) + 100;
+        
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        for (let i = 0; i < 40; i++) {
+            particles.push(new Particle(x, y, color));
+        }
+    }
+
+    function animateFireworks() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((particle, index) => {
+            if (particle.alpha <= 0) {
+                particles.splice(index, 1);
+            } else {
+                particle.update();
+                particle.draw();
+            }
+        });
+
+        animationFrameId = requestAnimationFrame(animateFireworks);
+    }
+
+    // Start popup and fireworks animation
+    function showExpoPopup() {
+        const popup = document.getElementById('entryExpoPopup');
+        if (popup) {
+            popup.classList.add('active');
+            fireworksInterval = setInterval(createFirework, 600);
+            animateFireworks();
+        }
+    }
+
+    // Function to close popup and stop fireworks loop
+    function closeExpoPopup() {
+        const popup = document.getElementById('entryExpoPopup');
+        if (popup) {
+            popup.classList.remove('active');
+        }
+        if (fireworksInterval) clearInterval(fireworksInterval);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Automatically show popup after 1 second (1000 ms)
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(showExpoPopup, 1000);
+    });
+</script>
     
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7"
