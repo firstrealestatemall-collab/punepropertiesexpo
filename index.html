@@ -1918,6 +1918,52 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNXWVRX7"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.form-container form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop page refresh
+
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.innerText;
+      submitBtn.innerText = 'Submitting...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Push event to Google Tag Manager
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            'event': 'pune_expo_lead_submitted'
+          });
+
+          // Show confirmation to user
+          alert('Thank you! Your VIP Pass registration was successful.');
+          form.reset();
+        } else {
+          alert('Something went wrong: ' + (data.message || 'Please try again.'));
+        }
+      })
+      .catch(error => {
+        console.error('Form submission error:', error);
+        alert('There was an error submitting the form. Please try again.');
+      })
+      .finally(() => {
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    });
+  });
+</script>
 </body>
 </html>
