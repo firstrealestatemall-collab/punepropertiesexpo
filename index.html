@@ -1774,7 +1774,8 @@
         <div class="form-container">
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="61b04dd4-29f0-493e-9b26-4b5f236b86d3"> 
-                <input type="hidden" name="subject" value="New Pune Property Expo VIP Lead">
+                <!-- Updated with id="form-subject" -->
+                <input type="hidden" name="subject" id="form-subject" value="New Pune Property Expo VIP Lead">
 
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
@@ -1921,6 +1922,19 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Dynamic Subject Line Logic for Google Ads vs Organic
+        const urlParams = new URLSearchParams(window.location.search);
+        const subjectInput = document.getElementById('form-subject');
+        
+        const gclid = urlParams.get('gclid');
+        const utmSource = urlParams.get('utm_source');
+
+        if (gclid || utmSource === 'google') {
+          subjectInput.value = '🔥 Google Ads Lead - Pune Property Expo VIP';
+        } else {
+          subjectInput.value = '🌐 Organic/Direct Lead - Pune Property Expo VIP';
+        }
+
         const form = document.querySelector('.form-container form');
         if (!form) return;
     
@@ -1933,6 +1947,10 @@
           submitBtn.disabled = true;
     
           const formData = new FormData(form);
+          
+          // Optional: append tracking details into email body text
+          formData.append('Traffic_Source', utmSource || 'Direct/Organic');
+          formData.append('Google_Click_ID', gclid || 'None');
     
           fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -1944,13 +1962,13 @@
           .then(response => response.json())
           .then(data => {
             if (data.success) {
-              // Push SUCCESS event to dataLayer only on verified lead creation
+              // Push SUCCESS event to dataLayer only on verified lead creation[cite: 10]
               window.dataLayer = window.dataLayer || [];
               window.dataLayer.push({
                 'event': 'pune_expo_lead_submitted'
               });
     
-              alert('Thank you! Your VIP Pass registration was successful.');
+              alert('Thank you! Your VIP Pass registration was successful.');[cite: 10]
               form.reset();
             } else {
               alert('Submission error: ' + (data.message || 'Please verify your details and try again.'));
